@@ -6,12 +6,12 @@ using System.Text;
 using System.Threading.Tasks;
 using UsbSimulator;
 
-namespace Ladeskab
+namespace ChargingBox
 {
     public class StationControl
     {
         // Enum med tilstande ("states") svarende til tilstandsdiagrammet for klassen
-        private enum LadeskabState
+        private enum ChargingBoxState
         {
             Available,
             Locked,
@@ -19,9 +19,10 @@ namespace Ladeskab
         };
 
         // Her mangler flere member variable
-        private LadeskabState _state;
+        private ChargingBoxState _state;
         private IUsbCharger _charger;
         private int _oldId;
+        private Door _door;
 
         private string logFile = "logfile.txt"; // Navnet på systemets log-fil
 
@@ -32,7 +33,7 @@ namespace Ladeskab
         {
             switch (_state)
             {
-                case LadeskabState.Available:
+                case ChargingBoxState.Available:
                     // Check for ladeforbindelse
                     if (_charger.Connected)
                     {
@@ -45,7 +46,7 @@ namespace Ladeskab
                         }
 
                         Console.WriteLine("Skabet er låst og din telefon lades. Brug dit RFID tag til at låse op.");
-                        _state = LadeskabState.Locked;
+                        _state = ChargingBoxState.Locked;
                     }
                     else
                     {
@@ -54,11 +55,11 @@ namespace Ladeskab
 
                     break;
 
-                case LadeskabState.DoorOpen:
+                case ChargingBoxState.DoorOpen:
                     // Ignore
                     break;
 
-                case LadeskabState.Locked:
+                case ChargingBoxState.Locked:
                     // Check for correct ID
                     if (id == _oldId)
                     {
@@ -70,7 +71,7 @@ namespace Ladeskab
                         }
 
                         Console.WriteLine("Tag din telefon ud af skabet og luk døren");
-                        _state = LadeskabState.Available;
+                        _state = ChargingBoxState.Available;
                     }
                     else
                     {

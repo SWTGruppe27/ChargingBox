@@ -6,12 +6,12 @@ namespace ChargingBox
 {
     public class Door : IDoor
     {
-        void LockDoor()
+        public void LockDoor()
         {
 
         }
 
-        void UnlockDoor()
+        public void UnlockDoor()
         {
 
         }
