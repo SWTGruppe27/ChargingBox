@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ChargingBox
 {
-    interface IChargeControl
+    public interface IChargeControl
     {
     }
 }

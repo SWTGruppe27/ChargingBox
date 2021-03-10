@@ -4,7 +4,13 @@ using System.Text;
 
 namespace ChargingBox
 {
-    interface IRfidReader
+    public class ReadIdEventArgs : EventArgs
     {
+        public int Id { get; set; }
+    }
+
+    public interface IRfidReader
+    {
+        event EventHandler<ReadIdEventArgs> ReadIdEvent;
     }
 }
