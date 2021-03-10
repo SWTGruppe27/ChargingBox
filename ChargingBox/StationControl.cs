@@ -23,15 +23,17 @@ namespace ChargingBox
         private int _oldId;
         private IDoor _door;
         private IRfidReader _rfidReader;
+        private IDisplay _display;
 
         private string logFile = "logfile.txt"; // Navnet på systemets log-fil
 
-        public StationControl(IDoor door, IRfidReader rfidReader, IChargeControl chargeControl)
+        public StationControl(IDoor door, IRfidReader rfidReader, IChargeControl chargeControl, IDisplay display)
         {
             _rfidReader = rfidReader;
             _door = door;
             _rfidReader.ReadIdEvent += RfidDetected;
             _door.DoorChangedStateEvent += DoorChangedState;
+            _display = display;
         }
 
         // Eksempel på event handler for eventet "RFID Detected" fra tilstandsdiagrammet for klassen
@@ -51,12 +53,12 @@ namespace ChargingBox
                             writer.WriteLine(DateTime.Now + ": Skab låst med RFID: {0}", e.Id);
                         }
 
-                        Console.WriteLine("Skabet er låst og din telefon lades. Brug dit RFID tag til at låse op.");
+                        _display.ChargingBoxLocked();
                         _state = ChargingBoxState.Locked;
                     }
                     else
                     {
-                        Console.WriteLine("Din telefon er ikke ordentlig tilsluttet. Prøv igen.");
+                        _display.ConnectionToChargerFailed();
                     }
 
                     break;
@@ -76,12 +78,12 @@ namespace ChargingBox
                             writer.WriteLine(DateTime.Now + ": Skab låst op med RFID: {0}", e.Id);
                         }
 
-                        Console.WriteLine("Tag din telefon ud af skabet og luk døren");
+                        _display.RemovePhone();
                         _state = ChargingBoxState.Available;
                     }
                     else
                     {
-                        Console.WriteLine("Forkert RFID tag");
+                        _display.RfidError();
                     }
 
                     break;
@@ -94,10 +96,12 @@ namespace ChargingBox
             if (e._doorOpen == true)
             {
                 _state = ChargingBoxState.DoorOpen;
+                _display.ConnectPhone();
             }
             else
             {
                 _state = ChargingBoxState.Available;
+                _display.ScanRfid();
             }
         }
     }

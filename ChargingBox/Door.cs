@@ -10,12 +10,12 @@ namespace ChargingBox
 
         public void LockDoor()
         {
-            Console.WriteLine("Ladeskab er optaget");
+            Console.WriteLine("Lock door");
         }
 
         public void UnlockDoor()
         {
-            Console.WriteLine("Indlæs RFID");
+            Console.WriteLine("Unlock door");
         }
 
         public void ChangeDoorState(bool doorState)
