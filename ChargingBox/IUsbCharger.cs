@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace UsbSimulator
+namespace ChargingBox
 {
     public class CurrentEventArgs : EventArgs
     {
