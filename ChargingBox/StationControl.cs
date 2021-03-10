@@ -31,6 +31,7 @@ namespace ChargingBox
             _rfidReader = rfidReader;
             _door = door;
             _rfidReader.ReadIdEvent += RfidDetected;
+            _door.DoorChangedStateEvent += DoorChangedState;
         }
 
         // Eksempel på event handler for eventet "RFID Detected" fra tilstandsdiagrammet for klassen
@@ -88,5 +89,16 @@ namespace ChargingBox
         }
 
         // Her mangler de andre trigger handlere
+        private void DoorChangedState(object sender, DoorChangedStateEventArgs e)
+        {
+            if (e._doorOpen == true)
+            {
+                _state = ChargingBoxState.DoorOpen;
+            }
+            else
+            {
+                _state = ChargingBoxState.Available;
+            }
+        }
     }
 }
