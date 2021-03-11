@@ -1,3 +1,4 @@
+using NSubstitute;
 using NUnit.Framework;
 
 namespace ChargingBox.Test.NUnit
@@ -15,13 +16,20 @@ namespace ChargingBox.Test.NUnit
         [SetUp]
         public void Setup()
         {
+            uutChargeControl = Substitute.For<IChargeControl>();
+            uutDisplay = Substitute.For<IDisplay>();
+            uutDoor = Substitute.For<IDoor>();
+            uutRfidReader = Substitute.For<IRfidReader>();
+            uutUsbCharger = Substitute.For<IUsbCharger>();
 
+            uut = new StationControl(uutDoor, uutRfidReader, uutChargeControl, uutDisplay, uutUsbCharger);
         }
 
         [Test]
-        public void Test1()
+        public void 
         {
-            Assert.Pass();
+
+
         }
     }
 }
