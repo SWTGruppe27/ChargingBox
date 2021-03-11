@@ -7,6 +7,7 @@ namespace ChargingBox
         static void Main(string[] args)
         {
             // Assemble your system here from all the classes
+            StationControl _stationControl = new StationControl();
 
             bool finish = false;
             do
@@ -18,16 +19,17 @@ namespace ChargingBox
 
                 switch (input[0])
                 {
+                    //End program
                     case 'E':
                         finish = true;
                         break;
 
                     case 'O':
-                        door.OnDoorOpen();
+                        _stationControl.Door.();
                         break;
 
                     case 'C':
-                        door.OnDoorClose();
+                        _stationControl.Door.LockDoor();
                         break;
 
                     case 'R':
