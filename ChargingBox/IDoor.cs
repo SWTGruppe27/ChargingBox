@@ -14,6 +14,8 @@ namespace ChargingBox
         void LockDoor();
         void UnlockDoor();
 
+        void ChangeDoorState(bool doorState);
+
         event EventHandler<DoorChangedStateEventArgs> DoorChangedStateEvent;
     }
 }
