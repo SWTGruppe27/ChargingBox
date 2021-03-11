@@ -8,7 +8,7 @@ namespace ChargingBox
         {
             // Assemble your system here from all the classes
             StationControl _stationControl = new StationControl();
-
+        
             bool finish = false;
             do
             {
@@ -25,11 +25,11 @@ namespace ChargingBox
                         break;
 
                     case 'O':
-                        _stationControl.Door.();
+                        _stationControl.Door.ChangeDoorState(true);
                         break;
 
                     case 'C':
-                        _stationControl.Door.LockDoor();
+                        _stationControl.Door.ChangeDoorState(false);
                         break;
 
                     case 'R':
@@ -37,7 +37,7 @@ namespace ChargingBox
                         string idString = System.Console.ReadLine();
 
                         int id = Convert.ToInt32(idString);
-                        rfidReader.OnRfidRead(id);
+                       _stationControl.RfidReader.
                         break;
 
                     default:
