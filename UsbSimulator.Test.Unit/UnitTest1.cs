@@ -1,4 +1,5 @@
 using System.Threading;
+using ChargingBox;
 using NUnit.Framework;
 
 namespace UsbSimulator.Test.Unit

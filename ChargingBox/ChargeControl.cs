@@ -6,19 +6,27 @@ namespace ChargingBox
 {
     public class ChargeControl :IChargeControl
     {
+        private UsbChargerSimulator _usbChargerSimulator;
         public bool IsConnected()
         {
-            return true;
+            if (_usbChargerSimulator.Connected)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public void StartCharge()
         {
-
+            _usbChargerSimulator.StartCharge();
         }
 
         public void StopCharge()
         {
-
+            _usbChargerSimulator.StopCharge();
         }
     }
 }
