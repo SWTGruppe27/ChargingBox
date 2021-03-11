@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ChargingBox
 {
-    public class RfidReader
+    public class RfidReader : IRfidReader
     {
         private int _id;
         public event EventHandler<ReadIdEventArgs> ReadIdEvent;

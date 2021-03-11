@@ -27,14 +27,44 @@ namespace ChargingBox
 
         private string logFile = "logfile.txt"; // Navnet på systemets log-fil
 
+        private void AttachEvents()
+        {
+            _rfidReader.ReadIdEvent += RfidDetected;
+            _door.DoorChangedStateEvent += DoorChangedState;
+        }
+        public IDoor Door
+        {
+            get
+            {
+                return _door;
+            }
+        }
+        public IRfidReader RfidReader
+        {
+            get
+            {
+                return _rfidReader;
+            }
+        }
+
+        public StationControl()
+        {
+            _rfidReader = new RfidReader();
+            _door = new Door();
+            _display = new Display();
+            _charger = new UsbChargerSimulator();
+
+            AttachEvents();
+        }
+
         public StationControl(IDoor door, IRfidReader rfidReader, IChargeControl chargeControl, IDisplay display, IUsbCharger usbCharger)
         {
             _rfidReader = rfidReader;
             _door = door;
-            _rfidReader.ReadIdEvent += RfidDetected;
-            _door.DoorChangedStateEvent += DoorChangedState;
             _display = display;
             _charger = usbCharger;
+
+            AttachEvents();
         }
 
         // Eksempel på event handler for eventet "RFID Detected" fra tilstandsdiagrammet for klassen
