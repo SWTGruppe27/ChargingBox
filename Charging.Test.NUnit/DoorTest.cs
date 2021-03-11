@@ -26,5 +26,13 @@ namespace ChargingBox.Test.NUnit
             uut.ChangeDoorState(true);
             Assert.That(_doorEventArgs,Is.Not.Null);
         }
+
+        [TestCase(false)]
+        [TestCase(true)]
+        public void DoorOpen_EventFired_CorrectValue(bool state)
+        {
+            uut.ChangeDoorState(state);
+            Assert.That(_doorEventArgs._doorOpen, Is.EqualTo(state));
+        }
     }
 }
