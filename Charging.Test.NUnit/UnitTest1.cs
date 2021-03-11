@@ -2,6 +2,7 @@ using NUnit.Framework;
 
 namespace ChargingBox.Test.NUnit
 {
+    [TestFixture]
     public class Tests
     {
         private StationControl uut;
