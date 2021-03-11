@@ -4,7 +4,7 @@ using NUnit.Framework;
 namespace ChargingBox.Test.NUnit
 {
     [TestFixture]
-    public class StationControl
+    public class StationControlTest
     {
         private StationControl uut;
         private IChargeControl uutChargeControl;
