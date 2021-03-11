@@ -28,7 +28,7 @@ namespace ChargingBox
 
         public void ChargeStationLockedNotAvalible()
         {
-            Console.WriteLine("Ladeskab er optager");
+            Console.WriteLine("Ladeskab er optaget");
         }
 
         public void RfidError()
