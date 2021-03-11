@@ -37,7 +37,7 @@ namespace ChargingBox
                         string idString = System.Console.ReadLine();
 
                         int id = Convert.ToInt32(idString);
-                       _stationControl.RfidReader.
+                       _stationControl.RfidReader.SetId(id);
                         break;
 
                     default:

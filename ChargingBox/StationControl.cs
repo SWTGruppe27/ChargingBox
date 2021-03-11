@@ -124,15 +124,22 @@ namespace ChargingBox
         // Her mangler de andre trigger handlere
         private void DoorChangedState(object sender, DoorChangedStateEventArgs e)
         {
-            if (e._doorOpen == true)
+            if (_state != ChargingBoxState.Locked)
             {
-                _state = ChargingBoxState.DoorOpen;
-                _display.ConnectPhone();
+                if (e._doorOpen == true)
+                {
+                    _state = ChargingBoxState.DoorOpen;
+                    _display.ConnectPhone();
+                }
+                else
+                {
+                    _state = ChargingBoxState.Available;
+                    _display.ScanRfid();
+                }
             }
             else
             {
-                _state = ChargingBoxState.Available;
-                _display.ScanRfid();
+                _display.ChargeStationLockedNotAvalible();
             }
         }
     }

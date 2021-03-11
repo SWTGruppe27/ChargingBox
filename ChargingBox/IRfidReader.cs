@@ -12,5 +12,7 @@ namespace ChargingBox
     public interface IRfidReader
     {
         event EventHandler<ReadIdEventArgs> ReadIdEvent;
+
+        void SetId(int Id);
     }
 }
