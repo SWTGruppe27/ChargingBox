@@ -26,9 +26,8 @@ namespace ChargingBox.Test.NUnit
         }
 
         [Test]
-        public void 
+        public void test1()
         {
-
 
         }
     }
