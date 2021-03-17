@@ -35,5 +35,11 @@ namespace ChargingBox.Test.NUnit
             uut.SetId(id);
             Assert.That(_rfIdEventArgs.Id, Is.EqualTo(id));
         }
+
+        [Test]
+        public void NegativeId_ExceptionIsThrown()
+        {
+            Assert.That(() => uut.SetId(-10), Throws.TypeOf<RfidReader.NegativeIdException>());
+        }
     }
 }
