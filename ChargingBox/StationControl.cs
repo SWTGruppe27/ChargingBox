@@ -10,7 +10,7 @@ namespace ChargingBox
     public class StationControl
     {
         // Enum med tilstande ("states") svarende til tilstandsdiagrammet for klassen
-        private enum ChargingBoxState
+        public enum ChargingBoxState
         {
             Available,
             Locked,
@@ -32,6 +32,12 @@ namespace ChargingBox
             _rfidReader.ReadIdEvent += RfidDetected;
             _door.DoorChangedStateEvent += DoorChangedState;
         }
+
+        public ChargingBoxState GetChargingBoxState()
+        {
+            return _state;
+        }
+
         public IDoor Door
         {
             get
