@@ -19,7 +19,7 @@ namespace ChargingBox
 
         // Her mangler flere member variable
         private ChargingBoxState _state;
-        private IUsbCharger _charger;
+        private IChargeControl _charger;
         private int _oldId;
         private IDoor _door;
         private IRfidReader _rfidReader;
@@ -52,17 +52,17 @@ namespace ChargingBox
             _rfidReader = new RfidReader();
             _door = new Door();
             _display = new Display();
-            _charger = new UsbChargerSimulator();
+            _charger = new ChargeControl(new UsbChargerSimulator());
 
             AttachEvents();
         }
 
-        public StationControl(IDoor door, IRfidReader rfidReader, IChargeControl chargeControl, IDisplay display, IUsbCharger usbCharger)
+        public StationControl(IDoor door, IRfidReader rfidReader, IChargeControl chargeControl, IDisplay display, IChargeControl charger)
         {
             _rfidReader = rfidReader;
             _door = door;
             _display = display;
-            _charger = usbCharger;
+            _charger = charger;
 
             AttachEvents();
         }
@@ -74,7 +74,7 @@ namespace ChargingBox
             {
                 case ChargingBoxState.Available:
                     // Check for ladeforbindelse
-                    if (_charger.Connected)
+                    if (_charger.IsConnected())
                     {
                         _door.LockDoor();
                         _charger.StartCharge();

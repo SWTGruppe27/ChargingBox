@@ -22,7 +22,7 @@ namespace ChargingBox.Test.NUnit
             uutRfidReader = Substitute.For<IRfidReader>();
             uutUsbCharger = Substitute.For<IUsbCharger>();
 
-            uut = new StationControl(uutDoor, uutRfidReader, uutChargeControl, uutDisplay, uutUsbCharger);
+            uut = new StationControl(uutDoor, uutRfidReader, uutChargeControl, uutDisplay, uutChargeControl);
         }
 
         [Test]
