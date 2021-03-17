@@ -5,6 +5,7 @@ using NUnit.Framework;
 
 namespace ChargingBox.Test.NUnit
 {
+
     [TestFixture]
     class ChargingControlTest
     {

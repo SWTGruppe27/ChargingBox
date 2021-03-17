@@ -8,19 +8,28 @@ namespace ChargingBox
     {
         public event EventHandler<DoorChangedStateEventArgs> DoorChangedStateEvent;
 
+        public bool _doorLocked { get; private set; }
+
+        public Door()
+        {
+            _doorLocked = false;
+        }
+
         public void LockDoor()
         {
+            _doorLocked = true;
             Console.WriteLine("Lock door");
         }
 
         public void UnlockDoor()
         {
+            _doorLocked = false;
             Console.WriteLine("Unlock door");
         }
 
         public void ChangeDoorState(bool doorState)
         {
-            OpenDoor(new DoorChangedStateEventArgs {_doorOpen = doorState});
+            OpenDoor(new DoorChangedStateEventArgs { _doorOpen = doorState });
         }
 
         protected virtual void OpenDoor(DoorChangedStateEventArgs e)
