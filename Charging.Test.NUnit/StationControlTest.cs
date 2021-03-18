@@ -135,5 +135,13 @@ namespace ChargingBox.Test.NUnit
             uutDisplay.Received(1).ChargeStationLockedNotAvalible();
         }
 
+        [TestCase(true, StationControl.ChargingBoxState.DoorOpen)]
+        [TestCase(false, StationControl.ChargingBoxState.Available)]
+        public void StationControl_GetState_StateIsDoorOpen(bool doorState, StationControl.ChargingBoxState state)
+        {
+            uutDoor.DoorChangedStateEvent += Raise.EventWith(new DoorChangedStateEventArgs() { _doorOpen = doorState });
+
+            Assert.That(uut.GetChargingBoxState(), Is.EqualTo(state));
+        }
     }
 }
