@@ -151,10 +151,18 @@ namespace ChargingBox.Test.NUnit
         }
 
         [Test]
-        public void StationControl_GetRfidReader_rfidReaderIsNotNull()
+        public void StationControl_GetRfidReader_RfidReaderIsNotNull()
         {
             Assert.That(uut.RfidReader, Is.Not.Null);
         }
 
+        [Test]
+        public void StationControl_RfidReaderDetected_DoorOpenState()
+        {
+            uutDoor.DoorChangedStateEvent += Raise.EventWith(new DoorChangedStateEventArgs() { _doorOpen = true });
+            uutRfidReader.ReadIdEvent += Raise.EventWith(new ReadIdEventArgs() { Id = 12 });
+
+            uutDisplay.Received(1).DoorIsOpen();
+        }
     }
 }

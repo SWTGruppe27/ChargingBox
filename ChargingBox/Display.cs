@@ -40,5 +40,10 @@ namespace ChargingBox
         {
             Console.WriteLine("Fjern tilsluttet telefon");
         }
+
+        public void DoorIsOpen()
+        {
+            Console.WriteLine("Døren er åben");
+        }
     }
 }

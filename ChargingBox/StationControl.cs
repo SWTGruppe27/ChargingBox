@@ -101,7 +101,7 @@ namespace ChargingBox
                     break;
 
                 case ChargingBoxState.DoorOpen:
-                    // Ignore
+                    _display.DoorIsOpen();
                     break;
 
                 case ChargingBoxState.Locked:
