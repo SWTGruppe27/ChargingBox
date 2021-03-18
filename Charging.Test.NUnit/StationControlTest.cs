@@ -91,7 +91,7 @@ namespace ChargingBox.Test.NUnit
         }
 
         [Test]
-        public void StationControl_RfidDetectedBoxLocked_DoorUnlockdCorrect()
+        public void StationControl_RfidDetectedBoxLocked_DoorUnlockedCorrect()
         {
             uutChargeControl.IsConnected().Returns(true);
             uutDoor.DoorChangedStateEvent += Raise.EventWith(new DoorChangedStateEventArgs() { _doorOpen = false });
@@ -123,5 +123,17 @@ namespace ChargingBox.Test.NUnit
 
             uutDisplay.Received(1).RfidError();
         }
+
+        [Test]
+        public void StationControl_DoorChangeState_DisplayChargeingBoxIsLocked()
+        {
+            uutChargeControl.IsConnected().Returns(true);
+            uutDoor.DoorChangedStateEvent += Raise.EventWith(new DoorChangedStateEventArgs() { _doorOpen = false });
+            uutRfidReader.ReadIdEvent += Raise.EventWith(new ReadIdEventArgs() { Id = 12 });
+            uutDoor.DoorChangedStateEvent += Raise.EventWith(new DoorChangedStateEventArgs() { _doorOpen = true });
+
+            uutDisplay.Received(1).ChargeStationLockedNotAvalible();
+        }
+
     }
 }
