@@ -143,5 +143,18 @@ namespace ChargingBox.Test.NUnit
 
             Assert.That(uut.GetChargingBoxState(), Is.EqualTo(state));
         }
+
+        [Test]
+        public void StationControl_GetDoor_DoorIsNotNull()
+        {
+            Assert.That(uut.Door, Is.Not.Null);
+        }
+
+        [Test]
+        public void StationControl_GetRfidReader_rfidReaderIsNotNull()
+        {
+            Assert.That(uut.RfidReader, Is.Not.Null);
+        }
+
     }
 }
