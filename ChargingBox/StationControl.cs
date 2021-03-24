@@ -132,7 +132,7 @@ namespace ChargingBox
         {
             if (_state != ChargingBoxState.Locked)
             {
-                if (e._doorOpen == true)
+                if (e.DoorOpen == true)
                 {
                     _state = ChargingBoxState.DoorOpen;
                     _display.ConnectPhone();
