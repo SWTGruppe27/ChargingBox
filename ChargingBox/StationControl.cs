@@ -58,7 +58,7 @@ namespace ChargingBox
             _rfidReader = new RfidReader();
             _door = new Door();
             _display = new Display();
-            _charger = new ChargeControl(new UsbChargerSimulator());
+            _charger = new ChargeControl(new UsbChargerSimulator(), new Display());
 
             AttachEvents();
         }
