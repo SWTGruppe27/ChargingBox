@@ -10,13 +10,18 @@ namespace ChargingBox.Test.NUnit
     class ChargingControlTest
     {
         private ChargeControl uut;
+        private CurrentEventArgs _currentEvent = null;
         private IUsbCharger uutUsbCharger;
+        private IDisplay uutDisplay;
 
         [SetUp]
         public void Setup()
         {
             uutUsbCharger = Substitute.For<IUsbCharger>();
-            uut = new ChargeControl(uutUsbCharger);
+            uutDisplay = Substitute.For<IDisplay>();
+            uut = new ChargeControl(uutUsbCharger,uutDisplay);
+
+            uutUsbCharger.CurrentValueEvent += (o, args) => { _currentEvent = args; };
         }
 
         [TestCase(true)]
