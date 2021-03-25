@@ -54,6 +54,7 @@ namespace ChargingBox.Test.NUnit
         }
 
         [TestCase(1)]
+        [TestCase(4)]
         [TestCase(5)]
         public void ChargeControl_DisplayPhoneFullCharge_Correct(int current)
         {
@@ -62,16 +63,20 @@ namespace ChargingBox.Test.NUnit
         }
 
         [TestCase(6)]
+        [TestCase(100)]
         [TestCase(500)]
-        public void ChargeControl_()
+        public void ChargeControl_DisplayPhoneCharging_Correct(int current)
         {
-
+            uutUsbCharger.CurrentValueEvent += Raise.EventWith(new CurrentEventArgs() { Current = current });
+            uutDisplay.Received(1).PhoneCharging();
         }
 
         [TestCase(501)]
-        public void ChargeControl_uashiufddsgruo()
+        [TestCase(1000)]
+        public void ChargeControl_DisplayPhoneChargingError_Correct(int current)
         {
-
+            uutUsbCharger.CurrentValueEvent += Raise.EventWith(new CurrentEventArgs() { Current = current });
+            uutDisplay.Received(1).PhoneChargingError();
         }
     }
 }
