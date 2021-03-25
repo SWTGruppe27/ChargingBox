@@ -45,5 +45,7 @@ namespace ChargingBox.Test.NUnit
             uut.StopCharge();
             uutUsbCharger.Received(1).StopCharge();
         }
+
+
     }
 }

@@ -45,5 +45,20 @@ namespace ChargingBox
         {
             Console.WriteLine("Døren er åben");
         }
+
+        public void PhoneFullCharge()
+        {
+            Console.WriteLine("Telefonen er fuldt opladt");
+        }
+
+        public void PhoneCharging()
+        {
+            Console.WriteLine("Telefonen lader op");
+        }
+
+        public void PhoneChargingError()
+        {
+            Console.WriteLine("Fejlmeddelese: Fjern straks telefonen fra opladeren");
+        }
     }
 }
