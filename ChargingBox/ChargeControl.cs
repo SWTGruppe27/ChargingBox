@@ -20,12 +20,15 @@ namespace ChargingBox
         {
             if(e.Current < 0 && e.Current >= 5)
             {
+                _display.PhoneFullCharge();
             }
             else if (e.Current < 5 && e.Current >= 500)
             {
+                _display.PhoneCharging();
             }
             else if(e.Current < 500)
             {
+                _display.PhoneChargingError();
             }
         }
 
