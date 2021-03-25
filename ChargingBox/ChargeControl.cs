@@ -7,10 +7,26 @@ namespace ChargingBox
     public class ChargeControl :IChargeControl
     {
         private IUsbCharger _usbChargerSimulator;
+        private IDisplay _display;
 
-        public ChargeControl(IUsbCharger usbCharger)
+        public ChargeControl(IUsbCharger usbCharger, IDisplay display)
         {
             _usbChargerSimulator = usbCharger;
+            _display = display;
+            _usbChargerSimulator.CurrentValueEvent += CurrentValueEventHandler;
+        }
+
+        private void CurrentValueEventHandler(object sender, CurrentEventArgs e)
+        {
+            if(e.Current < 0 && e.Current >= 5)
+            {
+            }
+            else if (e.Current < 5 && e.Current >= 500)
+            {
+            }
+            else if(e.Current < 500)
+            {
+            }
         }
 
         public bool IsConnected()
