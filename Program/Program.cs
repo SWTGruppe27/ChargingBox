@@ -1,6 +1,7 @@
 ﻿using System;
+using ChargingBox;
 
-namespace ChargingBox
+namespace Program
 {
     class Program
     {
@@ -8,7 +9,7 @@ namespace ChargingBox
         {
             // Assemble your system here from all the classes
             StationControl _stationControl = new StationControl();
-        
+
             bool finish = false;
             do
             {
@@ -37,7 +38,7 @@ namespace ChargingBox
                         string idString = System.Console.ReadLine();
 
                         int id = Convert.ToInt32(idString);
-                       _stationControl.RfidReader.SetId(id);
+                        _stationControl.RfidReader.SetId(id);
                         break;
 
                     default:

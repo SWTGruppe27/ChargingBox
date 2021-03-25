@@ -13,6 +13,6 @@ namespace ChargingBox
     {
         event EventHandler<ReadIdEventArgs> ReadIdEvent;
 
-        void SetId(int Id);
+        void SetId(int id);
     }
 }

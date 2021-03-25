@@ -6,7 +6,7 @@ namespace ChargingBox
 {
     public class DoorChangedStateEventArgs : EventArgs
     {
-        public bool _doorOpen { get; set; }
+        public bool DoorOpen { get; set; }
     }
 
     public interface IDoor

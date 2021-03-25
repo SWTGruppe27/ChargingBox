@@ -5,14 +5,14 @@ VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChargingBox", "ChargingBox\ChargingBox.csproj", "{AEBEE573-8B55-4895-8E69-14E96755C65C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UsbSimulator.Test.Unit", "UsbSimulator.Test.Unit\UsbSimulator.Test.Unit.csproj", "{B29B57BF-F7A2-48B5-8419-2A6491D2DA32}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChargingBox.Test.NUnit", "Charging.Test.NUnit\ChargingBox.Test.NUnit.csproj", "{C79DA0D5-C74A-4E00-A1F2-E53B8EE704E8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A3C684C0-5EBF-49AA-BF27-76F9C3840413}"
 	ProjectSection(SolutionItems) = preProject
 		dotCoverCoverageConfigCore.xml = dotCoverCoverageConfigCore.xml
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Program", "Program\Program.csproj", "{B28634BA-BC82-44FB-A968-8B3DCFDAF78D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,14 +24,14 @@ Global
 		{AEBEE573-8B55-4895-8E69-14E96755C65C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AEBEE573-8B55-4895-8E69-14E96755C65C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AEBEE573-8B55-4895-8E69-14E96755C65C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B29B57BF-F7A2-48B5-8419-2A6491D2DA32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B29B57BF-F7A2-48B5-8419-2A6491D2DA32}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B29B57BF-F7A2-48B5-8419-2A6491D2DA32}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B29B57BF-F7A2-48B5-8419-2A6491D2DA32}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C79DA0D5-C74A-4E00-A1F2-E53B8EE704E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C79DA0D5-C74A-4E00-A1F2-E53B8EE704E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C79DA0D5-C74A-4E00-A1F2-E53B8EE704E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C79DA0D5-C74A-4E00-A1F2-E53B8EE704E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B28634BA-BC82-44FB-A968-8B3DCFDAF78D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B28634BA-BC82-44FB-A968-8B3DCFDAF78D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B28634BA-BC82-44FB-A968-8B3DCFDAF78D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B28634BA-BC82-44FB-A968-8B3DCFDAF78D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
