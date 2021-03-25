@@ -18,7 +18,7 @@ namespace ChargingBox
 
         private void CurrentValueEventHandler(object sender, CurrentEventArgs e)
         {
-            if(e.Current < 0 && e.Current >= 5)
+            if(e.Current > 0 && e.Current >= 5)
             {
                 _display.PhoneFullCharge();
             }

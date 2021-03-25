@@ -19,7 +19,7 @@ namespace ChargingBox.Test.NUnit
         {
             uutUsbCharger = Substitute.For<IUsbCharger>();
             uutDisplay = Substitute.For<IDisplay>();
-            uut = new ChargeControl(uutUsbCharger,uutDisplay);
+            uut = new ChargeControl(uutUsbCharger, uutDisplay);
 
             uutUsbCharger.CurrentValueEvent += (o, args) => { _currentEvent = args; };
         }
@@ -46,6 +46,32 @@ namespace ChargingBox.Test.NUnit
             uutUsbCharger.Received(1).StopCharge();
         }
 
+        [Test]
+        public void ChargeControl_DisplayPhoneFullCharge_EventFiredButNoMsgToDisp()
+        {
+            uutUsbCharger.CurrentValueEvent += Raise.EventWith(new CurrentEventArgs() { Current = 0 });
+            Assert.That(_currentEvent, Is.Not.Null);
+        }
 
+        [TestCase(1)]
+        [TestCase(5)]
+        public void ChargeControl_DisplayPhoneFullCharge_Correct(int current)
+        {
+            uutUsbCharger.CurrentValueEvent += Raise.EventWith(new CurrentEventArgs() { Current = current });
+            uutDisplay.Received(1).PhoneFullCharge();
+        }
+
+        [TestCase(6)]
+        [TestCase(500)]
+        public void ChargeControl_()
+        {
+
+        }
+
+        [TestCase(501)]
+        public void ChargeControl_uashiufddsgruo()
+        {
+
+        }
     }
 }
