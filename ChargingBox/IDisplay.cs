@@ -13,7 +13,9 @@ namespace ChargingBox
         void ChargeStationLockedNotAvalible();
         void RfidError();
         void RemovePhone();
-
         void DoorIsOpen();
+        void PhoneFullCharge();
+        void PhoneCharging();
+        void PhoneChargingError();
     }
 }
